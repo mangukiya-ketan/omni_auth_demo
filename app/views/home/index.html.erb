@@ -1,5 +1,9 @@
 
 
 welcome <%=current_user.email %>
+<br />
+<%=link_to 'Logout', destroy_user_session_path, method: :delete %><br />
 
-<%=link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% if current_user%>
+ <%=link_to 'Edit', edit_user_registration_path%>
+<% end %>

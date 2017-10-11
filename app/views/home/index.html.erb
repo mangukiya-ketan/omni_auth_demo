@@ -1,9 +1,11 @@
+<h1>Home Page</h1>
 
-
-welcome <%=current_user.email %>
-<br />
-<%=link_to 'Logout', destroy_user_session_path, method: :delete %><br />
-
-<% if current_user%>
- <%=link_to 'Edit', edit_user_registration_path%>
+<%if !current_user%>
+  <h3><%= link_to 'Login', new_user_session_path%></h3>
+  <h3><%= link_to 'Login With Facebook', user_facebook_omniauth_authorize_path%></h3>
+<%else%>
+  <%= "welcome #{current_user.email}"%>
+  <%=link_to 'Edit', edit_user_registration_path%><br />
+  <%=link_to 'Logout', destroy_user_session_path, method: :delete %><br />
 <% end %>
+<br />
